@@ -7,7 +7,7 @@ def covariance_matrix(X):
     # Write code here
     x = np.asarray(X)
     N = x.shape[0]
-    if  N < 2 or x.ndim <= 1:
+    if  N < 2 or x.ndim != 2:
         return None
     
 
