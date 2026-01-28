@@ -6,11 +6,13 @@ def covariance_matrix(X):
     """
     # Write code here
     x = np.asarray(X)
+    dim = x.ndim
     N = x.shape[0]
-    if  N < 2 or x.ndim != 2:
+    
+    if dim != 2 or N < 2:
         return None
     
+    center = x - np.mean(x,axis=0)
+    return (1/(N-1))*(center.T @ center)
 
-    centered = x - np.mean(x,axis=0)
-    return (1/(N-1))* np.dot(centered.T, centered)
     pass
