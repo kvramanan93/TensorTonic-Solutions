@@ -12,5 +12,5 @@ def covariance_matrix(X):
     
 
     centered = x - np.mean(x,axis=0)
-    return (1/(N-1))* centered.T @ centered
+    return (1/(N-1))* np.dot(centered.T, centered)
     pass
