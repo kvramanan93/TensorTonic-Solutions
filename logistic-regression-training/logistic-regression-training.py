@@ -24,8 +24,8 @@ def train_logistic_regression(X, y, lr=0.1, steps=1000):
         z = X@w + b
         p = _sigmoid(z)
 
-        p_clipped = np.clip(p,1e-12,1-1e-12)
-        loss = -np.mean((y*np.log(p_clipped)) + (1-y)*np.log(1-p_clipped))
+        #p_clipped = np.clip(p,1e-12,1-1e-12)
+        loss = -np.mean((y*np.log(p)) + (1-y)*np.log(1-p))
         loss_history.append(loss)
 
         error = p-y
@@ -34,6 +34,9 @@ def train_logistic_regression(X, y, lr=0.1, steps=1000):
 
         w -= lr*dw
         b -= lr*db
+
+        if step % 500 == 0:
+            print(f"Epoch {step:>4d} | Loss: {loss:.4f}")
 
     return (w,b)
     
